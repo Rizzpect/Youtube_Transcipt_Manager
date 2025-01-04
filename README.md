@@ -1,4 +1,4 @@
-**Youtube_Transcipt_Manager** :
+🌟 YouTube Transcript API 🌟
 A tool to fetch, organize, and manage YouTube video transcripts for easy access and AI training.
 
 
