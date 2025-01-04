@@ -25,7 +25,7 @@ def get_video_title(api_key, video_id):
 
 def main():
     # Your YouTube Data API key
-    api_key = "AIzaSyBjEZ2btLRX1KKUiBydL3D_EmiLQfMxmjM"#Enter Api Key
+    api_key = ""#Enter Api Key
 
     # File path containing video URLs
     file_path = r"D:\GITHUB\_urlfetchedlist.txt"
