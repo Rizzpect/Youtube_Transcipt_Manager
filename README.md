@@ -6,7 +6,7 @@ A tool to fetch, organize, and manage YouTube video transcripts for easy access 
 
 ## 📚 Overview
 
-The **YouTube Transcript Manager** is a powerful tool that allows you to fetch, organize, and manage YouTube video transcripts. Designed to streamline the process of creating a searchable database, this tool is particularly useful for extracting insights from content-rich channels like **Andrew Huberman** . It enables users to search specific topics (e.g., "psychology"), integrate with tools like Obsidian and Notion, and even prepare data for AI chatbot training.
+The **YouTube Transcript Manager** is a powerful tool that allows you to fetch, organize, and manage YouTube video transcripts. Designed to streamline the process of creating a searchable database, this tool is particularly useful for extracting insights from content-rich channels like **Andrew Huberman** . It enables users to search specific topics , integrate with tools like Obsidian and Notion, and even prepare data for AI chatbot training.
 
 With this tool, you can access and organize transcripts of all videos on a channel, make the content easily searchable, and store it in Markdown files for optimal use. The project also offers a fallback solution for videos that lack automatic transcripts by providing a manual transcript generator.
 
