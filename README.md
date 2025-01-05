@@ -37,10 +37,7 @@ With this tool, you can access and organize transcripts of all videos on a chann
    ```
 
 2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
+ 
 3. Run the script to fetch and save transcripts:
    ```bash
    python fetch_transcripts.py
