@@ -1,0 +1,3 @@
+pip install scrapetube
+pip install google-api-python-client
+pip install youtube-transcript-api
