@@ -36,12 +36,22 @@ With this tool, you can access and organize transcripts of all videos on a chann
    cd Youtube_Transcipt_Manager
    ```
 
-2. Install dependencies:
+2. Install dependencies:The project requires the following Python libraries and modules:
+
+Built-in Modules (pre-installed with Python):
+
+os – For file and directory management.
+sys – To manipulate Python runtime environment.
+re – For regular expressions.
+shutil – For advanced file operations.
+Third-Party Libraries:
+
+google-api-python-client – For interacting with Google APIs.
+youtube-transcript-api – For fetching YouTube video transcripts.
+
  
-3. Run the script to fetch and save transcripts:
-   ```bash
-   python fetch_transcripts.py
-   ```
+4. Run the script step by step (FROM A to E) to fetch and save transcripts:
+
 
 ---
 
