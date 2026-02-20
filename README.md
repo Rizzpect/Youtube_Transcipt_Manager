@@ -1,78 +1,187 @@
 # 🎥 YouTube Transcript Manager
 
-A tool to fetch, organize, and manage YouTube video transcripts for easy access and AI training.
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-
-
-## 📚 Overview
-
-The **YouTube Transcript Manager** is a powerful tool that allows you to fetch, organize, and manage YouTube video transcripts. Designed to streamline the process of creating a searchable database, this tool is particularly useful for extracting insights from content-rich channels like **Andrew Huberman** . It enables users to search specific topics , integrate with tools like Obsidian and Notion, and even prepare data for AI chatbot training.
-
-With this tool, you can access and organize transcripts of all videos on a channel, make the content easily searchable, and store it in Markdown files for optimal use. The project also offers a fallback solution for videos that lack automatic transcripts by providing a manual transcript generator.
-
-
-# 🌟 Features
-- **Fetch Transcripts**: Automatically fetch and save transcripts for all videos in a YouTube channel.
-- **Keyword Search**: Search for specific topics across all transcripts to quickly find relevant information.
-- **Obsidian Integration**: Store transcripts as Markdown files, making them ready for integration with [Obsidian](https://obsidian.md/) for efficient note-taking and organization.
-- **Error Handling**: Handles videos that do not have auto-generated transcripts, offering a manual transcript generation option.
-- **AI Chatbot Training**: Combine all transcripts into a single file for training AI models or performing data analysis.
+A powerful tool to **fetch, search, organize, and manage** YouTube video transcripts. Designed for content creators, researchers, and anyone building AI-powered knowledge bases.
 
 ---
 
-## 🛠️ How It Works
-1. **Fetch Video URLs**: Retrieve all video URLs for a given YouTube channel ID.
-2. **Fetch Transcripts**: Use the YouTube API to fetch video transcripts. The script will attempt to fetch transcripts for each video.
-3. **Organize Files**: Save transcripts as Markdown files, renamed with the video title for easy identification.
-4. **Keyword Search**: Users can search for specific keywords in the transcripts, allowing them to quickly locate relevant content.
-5. **AI Chatbot Training**: Combine all transcripts into a single file, making it ready for AI chatbot training.
+## ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| **📥 Channel Fetch** | Fetch transcripts for all videos in a YouTube channel |
+| **🎯 Single Video** | Fetch transcript for a single YouTube video URL |
+| **🔍 Keyword Search** | Search across all saved transcripts with context and timestamps |
+| **📦 Combine** | Merge all transcripts into a single file for AI training |
+| **📊 Statistics** | Word counts, durations, and video analytics |
+| **💾 Multi-Format** | Export as Markdown, JSON, TXT, or SRT subtitles |
+| **⏩ Resume Support** | Skip already-downloaded transcripts |
+| **🌍 Multi-Language** | Specify preferred transcript languages |
+| **📈 Progress Bar** | Visual progress for long-running operations |
 
 ---
 
 ## 🚀 Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Rizzpect/Youtube_Transcipt_Manager.git
-   cd Youtube_Transcipt_Manager
-   ```
 
-2. Install dependencies:The project requires the following Python libraries and modules:
+```bash
+git clone https://github.com/Rizzpect/Youtube_Transcipt_Manager.git
+cd Youtube_Transcipt_Manager
+pip install -r requirements.txt
+```
 
-Built-in Modules (pre-installed with Python):
+**Optional:** Install as a package for the `ytm` command:
+```bash
+pip install -e .
+```
 
-os – For file and directory management.
-sys – To manipulate Python runtime environment.
-re – For regular expressions.
-shutil – For advanced file operations.
-Third-Party Libraries:
+### Dependencies
 
-google-api-python-client – For interacting with Google APIs.
-youtube-transcript-api – For fetching YouTube video transcripts.
-
- 
-4. Run the script step by step (FROM A to E) to fetch and save transcripts:
-
+- [`scrapetube`](https://github.com/dermasmid/scrapetube) — Scrape YouTube channel videos (no API key needed)
+- [`youtube-transcript-api`](https://github.com/jdepoix/youtube-transcript-api) — Fetch video transcripts
+- [`google-api-python-client`](https://github.com/googleapis/google-api-python-client) — YouTube Data API (optional, for enhanced title accuracy)
+- [`tqdm`](https://github.com/tqdm/tqdm) — Progress bars
 
 ---
 
-## 🔧 Dependencies
-This project uses the following Python libraries:
-- [youtube-transcript-api](https://github.com/jdepoix/youtube-transcript-api): Used to fetch video transcripts from YouTube.
+## 📖 Usage
 
+### CLI Mode (Recommended)
 
-## 📝 Manual Transcript Generation
-For videos that do not have auto-generated transcripts, you can use the **manual transcript generator**. This tool allows you to input transcripts manually.
+The tool supports powerful CLI commands:
 
-The manual transcript generation code is borrowed from [youtube-transcript-api](https://github.com/jdepoix/youtube-transcript-api), which is licensed under the MIT License. If required, you can find the full license and credit information in the original repository.
+```bash
+# Fetch all transcripts for a channel
+python -m ytm fetch --channel UCsXVk37bltHxD1rDPwtNM8Q
+
+# Fetch a single video transcript
+python -m ytm fetch --video https://www.youtube.com/watch?v=dQw4w9WgXcQ
+
+# Fetch in JSON format with Spanish language preference
+python -m ytm fetch --channel UC_CHANNEL_ID --format json --language es
+
+# Search for a keyword across all transcripts
+python -m ytm search "machine learning" --dir Transcripts
+
+# Combine all transcripts into one file (great for AI training)
+python -m ytm combine --dir Transcripts --format txt
+
+# View transcript statistics
+python -m ytm stats --dir Transcripts
+```
+
+### Interactive Mode
+
+If you prefer a guided menu, simply run without arguments:
+
+```bash
+python -m ytm
+```
+
+Or use the legacy script:
+
+```bash
+python fetch_transcripts.py
+```
+
+### API Key (Optional)
+
+By default, video titles are extracted from **scrapetube** — no API key is required. However, if you want enhanced title accuracy, you can provide a **YouTube Data API v3** key:
+
+```bash
+python -m ytm fetch --channel UCsXVk37bltHxD1rDPwtNM8Q --api-key YOUR_API_KEY
+```
+
+To get an API key:
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a project and enable the **YouTube Data API v3**
+3. Generate an API key under **Credentials**
+
+---
+
+## 📁 Output Formats
+
+| Format | Extension | Best For |
+|--------|-----------|----------|
+| **Markdown** | `.md` | Obsidian, Notion, note-taking |
+| **JSON** | `.json` | Programmatic access, AI training |
+| **Text** | `.txt` | Plain text analysis, LLM input |
+| **SRT** | `.srt` | Subtitles, video editing |
+
+---
+
+## 🔍 Keyword Search
+
+Search across all your saved transcripts with context:
+
+```bash
+python -m ytm search "neural networks" --dir Transcripts --context 3
+```
+
+Output:
+```
+============================================================
+  Search Results for: 'neural networks'
+  Found 5 match(es)
+============================================================
+
+--- Deep Learning Fundamentals ---
+    File: Deep Learning Fundamentals.md
+
+  Match #1 (line 12) [05:23]:
+       `05:15` — ...the basics of deep learning...
+    >>> `05:23` — Today we'll discuss neural networks in detail.
+       `05:40` — Starting with perceptrons...
+```
+
+---
+
+## 📊 Statistics
+
+Get a quick overview of your transcript library:
+
+```bash
+python -m ytm stats --dir Transcripts
+```
+
+```
+============================================================
+  Transcript Statistics
+============================================================
+
+  Total transcript files:     42
+  Total words:                385,210
+  Total transcript entries:   18,432
+  Average words per video:    9,172
+  Estimated total duration:   32.5 hours
+
+  Longest transcript:  5-Hour Masterclass on AI
+                       (45,230 words)
+  Shortest transcript: Quick Tips #7
+                       (892 words)
+```
+
+---
+
+## 🧪 Running Tests
+
+```bash
+pip install pytest
+python -m pytest tests/ -v
+```
+
+---
 
 ## 📑 License
-The code in this repository is licensed under the MIT License..
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## 🤝 Acknowledgments
-- Special thanks to [jdepoix](https://github.com/jdepoix) for creating the [youtube-transcript-api](https://github.com/jdepoix/youtube-transcript-api) repository, which was used to fetch transcripts.
-- Inspired by the insightful content on **Alok M. Kanojia** (Dr. K) and the potential of using video transcripts to create a powerful knowledge base.
 
-
+- [jdepoix](https://github.com/jdepoix) for creating [`youtube-transcript-api`](https://github.com/jdepoix/youtube-transcript-api)
+- [dermasmid](https://github.com/dermasmid) for [`scrapetube`](https://github.com/dermasmid/scrapetube)
 
 ## 📧 Contact
-For any questions or suggestions, feel free to open an issue or contact me directly at rizwanrak272@gmail.com.
+
+For questions or suggestions, feel free to open an [issue](https://github.com/Rizzpect/Youtube_Transcipt_Manager/issues).

@@ -1,3 +1,4 @@
-pip install scrapetube
-pip install google-api-python-client
-pip install youtube-transcript-api
+scrapetube>=2.5.0
+google-api-python-client>=2.0.0
+youtube-transcript-api>=0.6.0
+tqdm>=4.60.0
